@@ -10,15 +10,15 @@ st.set_page_config(page_title = "Prediction of Diseases Outbreaks",
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-diabetes_model = pickle.load(open(os.path.join(working_dir, "saved_model/Diabetes_model.sav"), 'rb'))
-heart_model = pickle.load(open(os.path.join(working_dir, "saved_model/heart_disease_model.sav"), 'rb'))
-parkinson_model = pickle.load(open(os.path.join(working_dir, "saved_model/parkinson_model.sav"), 'rb'))
+diabetes_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/Diabetes_model.sav",'rb'))
+heart_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/heart_disease_model.sav",'rb'))
+parkinson_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/parkinson_model.sav",'rb'))
 
 with st.sidebar:
     selected = option_menu('Prediction of Diseases Outbreaks System ',
                             
                             ['Diabetes Prediction',
-                             'Heart Diseases Prediction',
+                             'Heart Diseases Prediction',  # Fixed capitalization
                              'Parkinson Prediction'],
                             menu_icon = 'hospital-fill',
                             icons = ['activity', 'heart','person'],
@@ -54,30 +54,24 @@ if selected == 'Diabetes Prediction':
     with col2:
         Age= st.text_input('Age of the Person')
 
-    diab_diagnosis = ' '
+    diab_diagnosis = ''
 
     if st.button('Diabetes Test Result'):
-        try:
-            user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
+        
+        user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
 
-            # Check if all fields are filled
-            if all(x.strip() for x in user_input):
-                user_input = [float(x) for x in user_input]
-                
-                diab_prediction = diabetes_model.predict([user_input])
+        user_input = [float(x) for x in user_input]
 
-                if diab_prediction[0] == 1:
-                    diab_diagnosis = "The person is diabetic"
-                else:
-                    diab_diagnosis = "The Person is not diabetic"
-            else:
-                diab_diagnosis = "Please fill all fields with valid numbers"
-        except ValueError:
-            diab_diagnosis = "Please enter valid numerical values in all fields"
+        diab_prediction = diabetes_model.predict([user_input])
+
+        if diab_prediction[0] == 1:
+            diab_diagnosis = "The person is diabetic"
+        else:
+            diab_diagnosis = "The Person is not diabetic"
     
     st.success(diab_diagnosis)
 
-if selected == 'Heart Diseases Prediction':
+if selected == 'Heart Diseases Prediction':  # Fixed to match sidebar menu
 
     st.title('Heart diseases prediction using ML')
 
@@ -125,27 +119,21 @@ if selected == 'Heart Diseases Prediction':
     heart_diagnosis = ''
 
     if st.button('Heart Disease Test Result'):
-        try:
-            user_input = [age,sex,cp,restbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]
+        
+        user_input = [age,sex,cp,restbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]
 
-            # Check if all fields are filled
-            if all(x.strip() for x in user_input):
-                user_input = [float(x) for x in user_input]
-                
-                heart_prediction = heart_model.predict([user_input])
+        user_input = [float(x) for x in user_input]
 
-                if heart_prediction[0] == 1:
-                    heart_diagnosis = "The person is having heart diseases"
-                else:
-                    heart_diagnosis = "The Person does not have a heart diseases"
-            else:
-                heart_diagnosis = "Please fill all fields with valid numbers"
-        except ValueError:
-            heart_diagnosis = "Please enter valid numerical values in all fields"
+        heart_prediction = heart_model.predict([user_input])
+
+        if heart_prediction[0] == 1:
+            heart_diagnosis = "The person is having heart diseases"
+        else:
+            heart_diagnosis = "The Person does not have a heart diseases"
     
     st.success(heart_diagnosis)
 
-if selected == 'Parkinson Prediction':
+if selected == 'Parkinson Prediction':  # Fixed to match sidebar menu
 
     st.title('Parkinson diseases prediction using ML')
 
@@ -220,24 +208,18 @@ if selected == 'Parkinson Prediction':
     parkinson_diagnosis = ''
 
     if st.button('Parkinson Disease Test Result'):
-        try:
-            user_input = [fo,fhi,flo,Jitter_percent,Jitter_Abs,RAP,PPQ,
-                        DDP,Shimer,Shimer_db,APQ3,APQ5,APQ,DDA,
-                        NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]
+        
+        user_input = [fo,fhi,flo,Jitter_percent,Jitter_Abs,RAP,PPQ,
+                      DDP,Shimer,Shimer_db,APQ3,APQ5,APQ,DDA,
+                      NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]
 
-            # Check if all fields are filled
-            if all(x.strip() for x in user_input):
-                user_input = [float(x) for x in user_input]
-                
-                parkinson_prediction = parkinson_model.predict([user_input])
+        user_input = [float(x) for x in user_input]
 
-                if parkinson_prediction[0] == 1:
-                    parkinson_diagnosis = "The person is having parkinson diseases"
-                else:
-                    parkinson_diagnosis = "The Person does not have a parkinson diseases"
-            else:
-                parkinson_diagnosis = "Please fill all fields with valid numbers"
-        except ValueError:
-            parkinson_diagnosis = "Please enter valid numerical values in all fields"
+        parkinson_prediction = parkinson_model.predict([user_input])
+
+        if parkinson_prediction[0] == 1:
+            parkinson_diagnosis = "The person is having parkinson diseases"
+        else:
+            parkinson_diagnosis = "The Person does not have a parkinson diseases"
     
     st.success(parkinson_diagnosis)
