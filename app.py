@@ -10,7 +10,7 @@ st.set_page_config(page_title = "Prediction of Diseases Outbreaks",
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-with open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/Diabetes_model.sav", 'rb') as file:
+with open(r"\workspaces\Prediction-of-Diseases-Outbreak\saved_model\Diabetes_model.sav", 'rb') as file:
     diabetes_model = pickle.load(file)
 
 with open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/heart_disease_model.sav", 'rb') as file:
