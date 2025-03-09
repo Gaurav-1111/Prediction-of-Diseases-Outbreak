@@ -10,9 +10,9 @@ st.set_page_config(page_title = "Prediction of Diseases Outbreaks",
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-diabetes_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/Diabetes_model.sav",'rb'))
-heart_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/heart_disease_model.sav",'rb'))
-parkinson_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/parkinson_model.sav",'rb'))
+diabetes_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/Diabetes_model.sav",'r'))
+heart_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/heart_disease_model.sav",'r'))
+parkinson_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/parkinson_model.sav",'r'))
 
 with st.sidebar:
     selected = option_menu('Prediction of Diseases Outbreaks System ',
