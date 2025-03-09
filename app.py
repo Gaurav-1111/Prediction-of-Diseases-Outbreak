@@ -62,7 +62,7 @@ if selected == 'Diabetes Prediction':
     diab_diagnosis = ''
   
     if st.button('Diabetes Test Result'):
-    try:
+      try:
         user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
         user_input = [float(x.strip()) if x.strip() else None for x in user_input]  # Convert to float
 
@@ -80,7 +80,7 @@ if selected == 'Diabetes Prediction':
 
         st.success(diab_diagnosis)
 
-    except ValueError:
+      except ValueError:
         st.error("🚨 Invalid input detected! Please enter only numeric values.")
 
    ''' if st.button('Diabetes Test Result'):
