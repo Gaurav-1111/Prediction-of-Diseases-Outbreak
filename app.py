@@ -18,7 +18,7 @@ with st.sidebar:
     selected = option_menu('Prediction of Diseases Outbreaks System ',
                             
                             ['Diabetes Prediction',
-                             'Heart Diseases Prediction',  # Fixed capitalization
+                             'Heart Diseases Prediction',
                              'Parkinson Prediction'],
                             menu_icon = 'hospital-fill',
                             icons = ['activity', 'heart','person'],
@@ -57,21 +57,27 @@ if selected == 'Diabetes Prediction':
     diab_diagnosis = ' '
 
     if st.button('Diabetes Test Result'):
-        
-        user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
+        try:
+            user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
 
-        user_input = [float(x) if x.strip() else None for x in user_input]
+            # Check if all fields are filled
+            if all(x.strip() for x in user_input):
+                user_input = [float(x) for x in user_input]
+                
+                diab_prediction = diabetes_model.predict([user_input])
 
-        diab_prediction = diabetes_model.predict([user_input])
-
-        if diab_prediction[0] == 1:
-            diab_diagnosis = "The person is diabetic"
-        else:
-            diab_diagnosis = "The Person is not diabetic"
+                if diab_prediction[0] == 1:
+                    diab_diagnosis = "The person is diabetic"
+                else:
+                    diab_diagnosis = "The Person is not diabetic"
+            else:
+                diab_diagnosis = "Please fill all fields with valid numbers"
+        except ValueError:
+            diab_diagnosis = "Please enter valid numerical values in all fields"
     
     st.success(diab_diagnosis)
 
-if selected == 'Heart Diseases Prediction':  # Fixed to match sidebar menu
+if selected == 'Heart Diseases Prediction':
 
     st.title('Heart diseases prediction using ML')
 
@@ -119,21 +125,27 @@ if selected == 'Heart Diseases Prediction':  # Fixed to match sidebar menu
     heart_diagnosis = ''
 
     if st.button('Heart Disease Test Result'):
-        
-        user_input = [age,sex,cp,restbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]
+        try:
+            user_input = [age,sex,cp,restbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]
 
-        user_input = [float(x) for x in user_input]
+            # Check if all fields are filled
+            if all(x.strip() for x in user_input):
+                user_input = [float(x) for x in user_input]
+                
+                heart_prediction = heart_model.predict([user_input])
 
-        heart_prediction = heart_model.predict([user_input])
-
-        if heart_prediction[0] == 1:
-            heart_diagnosis = "The person is having heart diseases"
-        else:
-            heart_diagnosis = "The Person does not have a heart diseases"
+                if heart_prediction[0] == 1:
+                    heart_diagnosis = "The person is having heart diseases"
+                else:
+                    heart_diagnosis = "The Person does not have a heart diseases"
+            else:
+                heart_diagnosis = "Please fill all fields with valid numbers"
+        except ValueError:
+            heart_diagnosis = "Please enter valid numerical values in all fields"
     
     st.success(heart_diagnosis)
 
-if selected == 'Parkinson Prediction':  # Fixed to match sidebar menu
+if selected == 'Parkinson Prediction':
 
     st.title('Parkinson diseases prediction using ML')
 
@@ -208,18 +220,24 @@ if selected == 'Parkinson Prediction':  # Fixed to match sidebar menu
     parkinson_diagnosis = ''
 
     if st.button('Parkinson Disease Test Result'):
-        
-        user_input = [fo,fhi,flo,Jitter_percent,Jitter_Abs,RAP,PPQ,
-                      DDP,Shimer,Shimer_db,APQ3,APQ5,APQ,DDA,
-                      NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]
+        try:
+            user_input = [fo,fhi,flo,Jitter_percent,Jitter_Abs,RAP,PPQ,
+                        DDP,Shimer,Shimer_db,APQ3,APQ5,APQ,DDA,
+                        NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE]
 
-        user_input = [float(x) for x in user_input]
+            # Check if all fields are filled
+            if all(x.strip() for x in user_input):
+                user_input = [float(x) for x in user_input]
+                
+                parkinson_prediction = parkinson_model.predict([user_input])
 
-        parkinson_prediction = parkinson_model.predict([user_input])
-
-        if parkinson_prediction[0] == 1:
-            parkinson_diagnosis = "The person is having parkinson diseases"
-        else:
-            parkinson_diagnosis = "The Person does not have a parkinson diseases"
+                if parkinson_prediction[0] == 1:
+                    parkinson_diagnosis = "The person is having parkinson diseases"
+                else:
+                    parkinson_diagnosis = "The Person does not have a parkinson diseases"
+            else:
+                parkinson_diagnosis = "Please fill all fields with valid numbers"
+        except ValueError:
+            parkinson_diagnosis = "Please enter valid numerical values in all fields"
     
     st.success(parkinson_diagnosis)
