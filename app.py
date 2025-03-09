@@ -65,7 +65,13 @@ if selected == 'Diabetes Prediction':
         
         user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
 
-        user_input = [float(x) for x in user_input]
+        #user_input = [float(x) for x in user_input]
+        try:
+          user_input = [float(x) for x in user_input]
+        except ValueError:
+        st.error("Please enter valid numeric values.")
+        st.stop()
+
 
         diab_prediction = diabetes_model.predict([user_input])
 
