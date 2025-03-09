@@ -74,7 +74,8 @@ if selected == 'Diabetes Prediction':
         else:
             diab_diagnosis = "The Person is not diabetic"
     
-    st.success(diab_diagnosis)
+        
+      st.success(diab_diagnosis)
 
 if selected == 'Heart Diseases Prediction':  # Fixed to match sidebar menu
 
