@@ -78,7 +78,7 @@ if selected == 'Diabetes Prediction':
         else:
             diab_diagnosis = "The person is not diabetic."
 
-        st.success(diab_diagnosis)
+    st.success(diab_diagnosis)
 
       except ValueError:
         st.error("🚨 Invalid input detected! Please enter only numeric values.")
