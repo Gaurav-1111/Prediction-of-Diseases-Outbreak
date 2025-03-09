@@ -1,6 +1,6 @@
-pandas 
-numpy 
 streamlit
-streamlit_option_menu
-scikit-learn == 1.5.2
-
+scikit-learn
+numpy
+pandas
+pickle-mixin
+streamlit-option-menu
