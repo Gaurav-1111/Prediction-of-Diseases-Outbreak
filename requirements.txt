@@ -2,4 +2,5 @@ pandas
 numpy 
 streamlit
 streamlit_option_menu
-scikit-learn
+scikit-learn == 1.5.2
+
