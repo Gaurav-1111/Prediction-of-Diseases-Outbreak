@@ -54,7 +54,7 @@ if selected == 'Diabetes Prediction':
     with col2:
         Age= st.text_input('Age of the Person')
 
-    diab_diagnosis = ''
+    diab_diagnosis = ' '
 
     if st.button('Diabetes Test Result'):
         
