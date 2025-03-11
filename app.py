@@ -10,10 +10,9 @@ st.set_page_config(page_title = "Prediction of Diseases Outbreaks",
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-diabetes_model = pickle.load(open(os.path.join(working_dir, "saved_model/Diabetes_model.sav"), 'rb'))
-heart_model = pickle.load(open(os.path.join(working_dir, "saved_model/heart_disease_model.sav"), 'rb'))
-parkinson_model = pickle.load(open(os.path.join(working_dir, "saved_model/parkinson_model.sav"), 'rb'))
-
+diabetes_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/Diabetes_model.sav",'rb'))
+heart_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/heart_disease_model.sav",'rb'))
+parkinson_model = pickle.load(open(r"/workspaces/Prediction-of-Diseases-Outbreak/saved_model/parkinson_model.sav",'rb'))
 
 with st.sidebar:
     selected = option_menu('Prediction of Diseases Outbreaks System ',
@@ -61,7 +60,7 @@ if selected == 'Diabetes Prediction':
         
         user_input = [pregnancies, Glucose, BloodPressure, skinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
 
-        user_input = [ float(x) for x in user_input ]
+        user_input = [float(x) for x in user_input]
 
         diab_prediction = diabetes_model.predict([user_input])
 
