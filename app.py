@@ -16,16 +16,6 @@ heart_model = pickle.load(open(r"heart_disease_model.sav",'rb'))
 parkinson_model = pickle.load(open(r"parkinson_model.sav",'rb'))
 
 
-'''with open('Prediction-of-Diseases-Outbreak/Prediction of Disease/Diabetes_model.sav', 'rb') as file:
-  diabetes_model = pickle.load(file)
-with open('Prediction-of-Diseases-Outbreak/Prediction of Disease/heart_diseases_model.sav', 'rb') as file:
-  diabetes_model = pickle.load(file)
-with open('Prediction-of-Diseases-Outbreak/Prediction of Disease/parkinson_model.sav', 'rb') as file:
-  diabetes_model = pickle.load(file)
-'''
-# Use the model to make predictions (example with test data)
-# predictions = loaded_model.predict(X_test) 
-
 with st.sidebar:
     selected = option_menu('Prediction of Diseases Outbreaks System ',
                             
