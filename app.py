@@ -64,7 +64,7 @@ if selected == 'Diabetes Prediction':
 
         user_input = [float(x) for x in user_input]
 
-        diab_prediction = Diabetes_model.predict([user_input])
+        diab_prediction = diabetes_model.predict([user_input])
 
         if diab_prediction[0] == 1:
             diab_diagnosis = "The person is diabetic"
