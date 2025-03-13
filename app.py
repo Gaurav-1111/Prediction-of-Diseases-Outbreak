@@ -24,7 +24,7 @@ with open('Prediction-of-Diseases-Outbreak/Prediction of Disease/parkinson_model
   diabetes_model = pickle.load(file)
 
 # Use the model to make predictions (example with test data)
-predictions = loaded_model.predict(X_test) 
+# predictions = loaded_model.predict(X_test) 
 
 with st.sidebar:
     selected = option_menu('Prediction of Diseases Outbreaks System ',
